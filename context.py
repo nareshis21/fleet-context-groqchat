@@ -104,9 +104,9 @@ def query(user_query: str, k: int = 10, filters: dict = None) -> list:
             }
         },
     """
-    if not os.environ.get("OPENAI_API_KEY"):
+    if not os.environ.get("GROQ_API_KEY"):
         raise Exception(
-            "OPENAI_API_KEY environment variable not set. Please run `export OPENAI_API_KEY=<your api key>`."
+            "GROQ_API_KEY environment variable not set. Please run `export GROQ_API_KEY=<your api key>`."
         )
 
     return retrieve(
