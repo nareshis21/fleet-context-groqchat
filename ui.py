@@ -187,7 +187,7 @@ def main():
         groq_api_key = os.environ.get("GROQ_API_KEY")
 
         # Get the OpenAI API key, if not found
-        if model in OPENAI_MODELS and not openai_key:
+        if model in OPENAI_MODELS and not groq_api_key:
             print_markdown(
                 """---
             !!!**Groq API key not found.**
