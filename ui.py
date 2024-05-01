@@ -184,26 +184,26 @@ def main():
 
     else:
         openrouter_key = os.environ.get("OPENROUTER_API_KEY")
-        openai_key = os.environ.get("OPENAI_API_KEY")
+        groq_api_key = os.environ.get("GROQ_API_KEY")
 
         # Get the OpenAI API key, if not found
         if model in OPENAI_MODELS and not openai_key:
             print_markdown(
                 """---
-            !!!**OpenAI API key not found.**
+            !!!**Groq API key not found.**
 
             Please provide a key to proceed.
             ---
             """
             )
-            openai_key = getpass("OpenAI API key: ")
-            os.environ["OPENAI_API_KEY"] = openai_key
+            groq_api_key = getpass("Groq API key: ")
+            os.environ["GROQ_API_KEY"] = groq_api_key
 
             print_markdown(
                 """
             ---
 
-            **Tip**: To save this key for later, run `export OPENAI_API_KEY=<your key>` on mac/linux or `setx OPENAI_API_KEY <your key>` on windows.
+            **Tip**: To save this key for later, run `export GROQ_API_KEY=<your key>` on mac/linux or `setx GROQ_API_KEY <your key>` on windows.
         
             For non-OpenAI models, you should set `OPENROUTER_API_KEY`, and optionally `OPENROUTER_APP_URL` and `OPENROUTER_APP_TITLE`.
 
@@ -236,12 +236,12 @@ def main():
             ---"""
             )
 
-    if model == "gpt-4-1106-preview":
+    if model == "mixtral-8x7b-32768":
         print_markdown(
             """!!!Welcome to Fleet Context!
         Generate and run code using the most up-to-date libraries.
         
-        *Warning*: You are using gpt-4-turbo, which is not yet stable and is rate limited at 100 requests per day. Please use with caution.
+        *Warning*: You are using mixtral-8x7b-32768. Please use with caution.
         
         """
         )
