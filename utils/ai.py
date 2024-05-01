@@ -5,7 +5,7 @@ import os
 import json
 import tiktoken
 import openai
-from openai import OpenAI
+#from openai import OpenAI
 from groq import Groq
 import requests
 
@@ -183,7 +183,8 @@ def get_remote_chat_response(messages, model="gpt-4-1106-preview"):
     Returns:
     str: The streamed OpenAI chat response.
     """
-    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+    #client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+    client = Groq()
 
     try:
         response = client.chat.completions.create(
