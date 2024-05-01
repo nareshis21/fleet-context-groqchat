@@ -5,12 +5,14 @@ import os
 import json
 import tiktoken
 import openai
-from openai import OpenAI
+#from openai import OpenAI
 from groq import Groq
 import requests
 
 from constants.cli import OPENAI_MODELS
 from constants.ai import SYSTEM_PROMPT, PROMPT, API_URL
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def retrieve(query, k=10, filters=None):
@@ -61,7 +63,7 @@ def retrieve_context(query, k=10, filters=None):
 def construct_prompt(
     messages,
     context_message,
-    model="gpt-4-1106-preview",
+    model="mixtral-8x7b-32768",
     cite_sources=True,
     context_window=3000,
 ):
@@ -172,7 +174,7 @@ def construct_prompt(
     return prompts
 
 
-def get_remote_chat_response(messages, model="gpt-4-1106-preview"):
+def get_remote_chat_response(messages, model="mixtral-8x7b-32768"):
     """
     Returns a streamed OpenAI chat response.
 
@@ -184,7 +186,7 @@ def get_remote_chat_response(messages, model="gpt-4-1106-preview"):
     str: The streamed OpenAI chat response.
     """
     #client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-    client = Groq()
+    client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
     try:
         response = client.chat.completions.create(
@@ -198,7 +200,7 @@ def get_remote_chat_response(messages, model="gpt-4-1106-preview"):
     except openai.AuthenticationError as error:
         print("401 Authentication Error:", error)
         raise Exception(
-            "Invalid OPENAI_API_KEY. Please re-run with a valid key.")
+            "Invalid GROQ_API_KEY. Please re-run with a valid key.")
 
     except Exception as error:
         print("Streaming Error:", error)
@@ -211,7 +213,7 @@ def get_other_chat_response(messages, model="local-model"):
 
     Parameters:
     messages (List[dict]): List of messages to be included in the prompt.
-    model (str): The model to be used for encoding, default is "gpt-4-1106-preview".
+    model (str): The model to be used for encoding, default is "mixtral-8x7b-32768".
 
     Returns:
     str: The streamed chat response.
@@ -250,7 +252,7 @@ def get_other_chat_response(messages, model="local-model"):
         else:
             if not os.environ.get("OPENROUTER_API_KEY"):
                 raise Exception(
-                    f"For non-OpenAI models, like {model}, set your OPENROUTER_API_KEY."
+                    f"For non-Groq models, like {model}, set your OPENROUTER_API_KEY."
                 )
 
             response = requests.post(
