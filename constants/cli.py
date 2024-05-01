@@ -1,8 +1,8 @@
 OPENAI_MODELS = [
-    "gpt-4-1106-preview",
-    "gpt-4",
-    "gpt-3.5-turbo",
-    "gpt-3.5-turbo-16k",
+    "llama3-8b-8192",
+    "llama3-70b-8192",
+    "mixtral-8x7b-32768",
+    "gemma-7b-it",
 ]
 
 ARGUMENTS = [
@@ -24,7 +24,7 @@ ARGUMENTS = [
         "nickname": "m",
         "help_text": "Specify the model. Default: gpt-4",
         "type": str,
-        "default": "gpt-4"
+        "default": "mixtral-8x7b-32768"
     },
     {
         "name": "cite_sources",
