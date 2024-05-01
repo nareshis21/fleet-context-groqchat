@@ -5,7 +5,7 @@ import os
 import json
 import tiktoken
 import openai
-#from openai import OpenAI
+from openai import OpenAI
 from groq import Groq
 import requests
 
