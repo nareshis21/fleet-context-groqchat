@@ -33,6 +33,7 @@ dependencies = [
   "rich>=13.0.0",
   "tiktoken>=0.3.3",
   "tqdm",
+  "groq",
 ]
 [project.urls]
 "Homepage" = "https://fleet.so"
