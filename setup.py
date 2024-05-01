@@ -7,7 +7,7 @@ setup(
     long_description=open("README.md", "r", encoding="utf8").read(),
     long_description_content_type="text/markdown",
     author="Fleet AI",
-    author_email="team@usefleet.ai",
+    author_email="nareshlahajal@gmail.com",
     url="https://github.com/fleet-ai/context/tree/main",
     packages=find_packages(),
     install_requires=[
