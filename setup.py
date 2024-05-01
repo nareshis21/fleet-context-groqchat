@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="fleet-context",
+    name="fleet-context-groq",
     version="1.1.8",
     description="A chat interface over up-to-date Python library documentation.",
     long_description=open("README.md", "r", encoding="utf8").read(),
@@ -16,6 +16,7 @@ setup(
         "tiktoken>=0.3.3",
         "tqdm>=4.62.3",
         "fastparquet>=2023.10.0",
+        "groq",
     ],
     py_modules=["cli", "context", "ui"],
     entry_points={
